@@ -1,0 +1,16 @@
+FROM node:12.16.3-alpine
+
+WORKDIR /app
+COPY . .
+
+RUN apk --no-cache --virtual build-dependencies add \
+    python \
+    make \
+    g++ \
+    && npm i \
+    && apk del build-dependencies \
+    && cp ./node_modules/libxl/deps/libxl/lib64/libxl.so .
+  
+ENV LD_LIBRARY_PATH "/app"
+
+ENTRYPOINT ["/bin/sh", "-c", "node index.js && echo $?"]

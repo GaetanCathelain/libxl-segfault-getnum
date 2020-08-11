@@ -1,0 +1,15 @@
+FROM node:12.16.3
+
+WORKDIR /app
+COPY . .
+
+RUN apt-get install \
+    python \
+    make \
+    g++ \
+    && npm i \
+    && cp ./node_modules/libxl/deps/libxl/lib64/libxl.so .
+        
+ENV LD_LIBRARY_PATH "/app"
+
+ENTRYPOINT ["/bin/sh", "-c", "node index.js && echo $?"]
