@@ -1,13 +1,14 @@
 ## Description
 
 This repo aims to put forward a segmentation fault issue encountered on Alpine Linux with node-libxl.
-Issue seems to be coming from 
+Issue seems to be coming from `readNum()` function.
 
 # Usage
 
 Prerequisites:
-	- Docker
-	- A valid LibXL License
+
+- Docker
+- A valid LibXL License
 
 To build and run the example:
 
